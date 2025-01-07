@@ -1,0 +1,51 @@
+Router setup
+1. Basic device setup for ServerRoom router
+	Hostname
+	Console password
+	Enable password
+	Secret password
+	Interfaces
+	Description on interfaces
+	Default gateway
+2. Routing
+	Static routing (implemented on a router in the server room on a router)
+	ServerRoom-Router(config)#ip route 192.168.0.128 255.255.255.128 192.168.0.1
+	do this for every single rack
+	ServerRoom-Router(config)#ip route 0.0.0.0 0.0.0.0 g0/0
+	do that once or at the very end
+3. DHCP setup
+	Goals:
+	Reserve addresses according to documentation
+	Implement DHCP pool of addresses for clients with addresses accroding to documentation
+	Test DHCP implementation
+	Steps:
+	1. Enable dhcp service
+	Rack1-Router1(config)#service dhcp
+
+	2. Exclude reserved addresses according to network documentation
+	Rack1-Router1(config)#ip dhcp excluded-addresses 192.168.0.253 192.168.0.254
+
+	3. Exit config mode and enter DHCP 'pool_name' mode
+	Rack1-Router1(config)#ip dhcp excluded-addresses 192.168.0.253 192.168.0.254
+	Rack1-Router1(config)#ip dhcp pool rack
+	where 'rack' is name of pool according to network documentation(ex. Rack1)
+
+	4. Set network address and default router address according to network documentation
+	Rack1-Router1(dhcp-config)#network 192.168.0.128 255.255.255.128
+	Rack1-Router1(dhcp-config)#default router 192.168.0.254
+
+	5. Set length of a DHCP lease
+	Rack1-Router1(dhcp-config)#lease 7
+	'7' means 7 days
+	where the format is 'lease {days [hours [minutes]] | infinite}'
+
+	6. Exit and save configuration. Test DHCP with client machines, utilzing cmd tools.
+
+	
+
+
+
+
+	
+	
+	
