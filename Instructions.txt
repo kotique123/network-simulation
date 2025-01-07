@@ -32,7 +32,7 @@ Router setup
 
 	4. Set network address and default router address according to network documentation
 	Rack1-Router1(dhcp-config)#network 192.168.0.128 255.255.255.128
-	Rack1-Router1(dhcp-config)#default router 192.168.0.254
+	Rack1-Router1(dhcp-config)#default-router 192.168.0.254
 
 	5. Set length of a DHCP lease
 	Rack1-Router1(dhcp-config)#lease 7
