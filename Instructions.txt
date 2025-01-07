@@ -41,6 +41,9 @@ Router setup
 
 	6. Exit and save configuration. Test DHCP with client machines, utilzing cmd tools.
 
+
+// TODO setup a second rack on packet tracer and check if i can ping clients between racks.
+
 	
 
 
